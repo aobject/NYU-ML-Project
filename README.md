@@ -4,41 +4,60 @@ This repository and project was developed for the CS-GY-6923 Machine Learning cl
 
 The author of the project is [Justin Snider](https://github.com/aobject/). 
 
+
+
+
+
+
+
+
+
 ## Introduction
 
 This project implements three extensions to machine learning strategies covered in the class. For each extension we demonstrate how the strategy can be implemented using the [scikit-learn](https://scikit-learn.org/stable/) and [PyTorch](https://pytorch.org/). Then, we will implement the strategy using only Numpy [NumPy](https://numpy.org/). 
 
 ## Required Setup
 
-1. Run the 'setup.py' Python script in the repository root folder. 
-   * This will do the following:
-     * Create a 'data/' directory
-     * Download the CIFAR-10 dataset
-     * Unpack the CIFAR-10 dataset
-     * Delete the tar file. 
-2. Install the correct required libraries.
-3. Set all notebooks as trusted. Most of the data visualization are interactive and created with Bokeh. If you do not set the notebook as trusted you will not see the interactive visualizations. 
+1. Open the notebook you would like to run in Google Colab via the links provided in this guide and you are ready to go! 
 
-## Directories
+   In side each notebook code is provided to allow you to mount Your Google Drive and load the data used to a 'temp-data' inside the root 'My Drive' folder. The data downloaded included is a limited and compressed portion of the MNIST and CIFAR-10 datasets. When you are done running these notebooks you can simply delete the 'temp-data' folder from Google Drive to recover the space. 
 
-Extension-1/		
 
-* The directory containing the Convolutional Neural Network extension. 
-
-Extension-2/
-
-* The directory containing the Pooling and ReLu extension. 
-
-Extension-3/
-
-* The directory containing the Skip Link Deep Neural Network extension. 
 
 
 ## Extension 01 // Neural Network CNN
 
 Description here. 
 
+### Convolutional Neural Network Implemented in NumPy
+
+[![Generic badge](https://img.shields.io/badge/CNN NumPy-Open in Colab-black.svg)](https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-1/scikit_pytorch_implementation.ipynb)
+
+[![Generic badge](https://img.shields.io/badge/CNN NumPy-View in GitHub-black.svg)](https://github.com/aobject/NYU-ML-Project/blob/master/Extension-1/extended_implementation_using_numpy.ipynb)
+
+
+
+[![forthebadge test](http://ForTheBadge.com/images/badges/no-ragrets.svg)](https://www.python.org/)
+
+
+
+### Convolutional Neural Network Implemented in PyTorch
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-1/scikit_pytorch_implementation.ipynb)
+
+
+
+### 
+
+
+
+
+
 ## Extension 02 // Pooling and ReLu
+
+```
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb)
+```
 
 Description here. 
 
@@ -46,7 +65,26 @@ Description here.
 
 Description here.
 
+
+
+## Directories
+
+Extension-1/		
+
+* The directory containing the Baseline Neural Network without CNN and a Convolutional Neural Network extension. The extension is implemented in PyTorch and separately in NumPy. There are unique implementations of both for the two datasets MNIST and CIFAR-10. In addition, we explore the benefits that can be gained using Leaky ReLu over a Sigmoid activation. 
+
+Extension-2/
+
+* The directory contains a baseline neural network without extension. In addition, there are Convolutional Neural Networks that have been extended with Pooling layers. Pooling has been implemented using NumPy only and with PyTorch. 
+
+Extension-3/
+
+* The directory containing a baseline neural network without extension. In addition, there are convolutional neural networks that have been extended with the skip link strategy used by deep neural networks. Skip link has been implemented using NumPy only and with PyTorch. 
+
+
+
 ## Datasets
+
 1. [SciKit Hand Written Digits](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html)
 	* Classes: 10 total including the digits 0 - 9
 	* Total Samples: 1,797
