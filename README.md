@@ -4,17 +4,9 @@ This repository and project was developed for the CS-GY-6923 Machine Learning cl
 
 The author of the project is [Justin Snider](https://github.com/aobject/). 
 
-
-
-
-
-
-
-
-
 ## Introduction
 
-This project implements three extensions to machine learning strategies covered in the class. For each extension we demonstrate how the strategy can be implemented using the [scikit-learn](https://scikit-learn.org/stable/) and [PyTorch](https://pytorch.org/). Then, we will implement the strategy using only Numpy [NumPy](https://numpy.org/). 
+This project implements three extensions to machine learning strategies covered in the class. For each extension we demonstrate how the strategy can be implemented using the [scikit-learn](https://scikit-learn.org/stable/) and [PyTorch](https://pytorch.org/). Then, we will implement the strategy using only [NumPy](https://numpy.org/). 
 
 ## Required Setup
 
@@ -31,39 +23,53 @@ Description here.
 
 ### Convolutional Neural Network Implemented in NumPy
 
-[![Generic badge](https://img.shields.io/badge/CNN NumPy-Open in Colab-black.svg)](https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-1/scikit_pytorch_implementation.ipynb)
+<a href="https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-1/extended_implementation_using_numpy.ipynb" style="text-decoration: none;font-family: Roboto, sans-serif;color: white;font-weight: bold;font-size: 16px;padding:8px;margin-top:4px;8px;margin-bottom:4px;background:#00B4FF;">Open in Colab</a>
 
-[![Generic badge](https://img.shields.io/badge/CNN NumPy-View in GitHub-black.svg)](https://github.com/aobject/NYU-ML-Project/blob/master/Extension-1/extended_implementation_using_numpy.ipynb)
-
-
-
-[![forthebadge test](http://ForTheBadge.com/images/badges/no-ragrets.svg)](https://www.python.org/)
+Description here.
 
 
 
 ### Convolutional Neural Network Implemented in PyTorch
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-1/scikit_pytorch_implementation.ipynb)
+<a href="https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-1/scikit_pytorch_implementation.ipynb" style="text-decoration: none;font-family: Roboto, sans-serif;color: white;font-weight: bold;font-size: 16px;padding:8px;margin-top:4px;8px;margin-bottom:4px;background:#00B4FF;">Open in Colab</a>
+
+description here. 
 
 
 
-### 
-
-
-
-
-
-## Extension 02 // Pooling and ReLu
-
-```
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb)
-```
+## Extension 02 // Pooling
 
 Description here. 
+
+### CNN with Pooling in NumPy
+
+<a href="https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-2/extended_implementation_using_numpy.ipynb" style="text-decoration: none;font-family: Roboto, sans-serif;color: white;font-weight: bold;font-size: 16px;padding:8px;margin-top:4px;8px;margin-bottom:4px;background:#00B4FF;">Open in Colab</a>
+
+Description here. 
+
+### CNN with Pooling in PyTorch
+
+<a href="https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-2/scikit_pytorch_implementation.ipynb" style="text-decoration: none;font-family: Roboto, sans-serif;color: white;font-weight: bold;font-size: 16px;padding:8px;margin-top:4px;8px;margin-bottom:4px;background:#00B4FF;">Open in Colab</a>
+
+Description here. 
+
+
 
 ## Extension 03 // Neural Network Deep Neural Network Skip Link Blocks
 
 Description here.
+
+### CNN with Skip Link Extension in NumPy
+
+<a href="https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-3/extended_implementation_using_numpy.ipynb" style="text-decoration: none;font-family: Roboto, sans-serif;color: white;font-weight: bold;font-size: 16px;padding:8px;margin-top:4px;8px;margin-bottom:4px;background:#00B4FF;">Open in Colab</a>
+
+Description here. 
+
+### CNN with Skip Link Extension in PyTorch
+
+<a href="https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-3/scikit_pytorch_implementation.ipynb" style="text-decoration: none;font-family: Roboto, sans-serif;color: white;font-weight: bold;font-size: 16px;padding:8px;margin-top:4px;8px;margin-bottom:4px;background:#00B4FF;">Open in Colab</a>
+
+Description here. 
 
 
 
@@ -96,7 +102,7 @@ Extension-3/
 	* Total Images: 60000, with 6000 images per class
 	* Training Images: 50000 training images
 	* Test Images: 10000
-	* Dimensionality: 32x32 colour images
+	* Dimensionality: 32 x 32 x 3 color images
 
 ## Bibliography
 
@@ -104,7 +110,7 @@ Research Papers and Online Resources:
 
 1. [PyTorch](https://pytorch.org/)
 2. [Scikit-learn](https://scikit-learn.org/)
-3. Numpy [NumPy](https://numpy.org/)
+3. [NumPy](https://numpy.org/)
 4. [Performance Benchmarks Organized by Dataset](https://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html)
 5. CNN papers and links here...
 6. Pooling and ReLu papers and links here...
