@@ -718,9 +718,14 @@ Extension-3/
 Research Papers and Online Resources: 
 
 [3] [PyTorch](https://pytorch.org/)
+
 [4] [Scikit-learn](https://scikit-learn.org/)
+
 [5] [NumPy](https://numpy.org/)
+
 [6] [Performance Benchmarks Organized by Dataset](https://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html)
+
 [7] [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
+
 * A paper by the creators of ResNet, which established a new gold standard for image analysis with neural networks using skip links. 
 
