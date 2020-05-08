@@ -1,4 +1,4 @@
-Machine Learning (CS-GY6923) Final Project
+# Machine Learning (CS-GY6923) Final Project
 
 This repository and project was developed for the graduate level machine learning class CS-GY-6923 at NYU. The class professor is Linda Sellie. 
 
@@ -26,7 +26,7 @@ The second dataset is the more challenging [CIFAR-10 ](https://www.cs.toronto.ed
 
 ## Required Setup
 
-1. Just click on the <a href="https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-1/extended_implementation_using_numpy.ipynb" style="text-decoration: none;font-family: Roboto, sans-serif;color: white;font-weight: bold;font-size: 16px;padding:8px;margin-top:4px;8px;margin-bottom:4px;background:#00B4FF;">Open in Colab</a> links provided in this guide and you are ready to go! 
+1. Just click on the [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-2/scikit_pytorch_implementation.ipynb) links provided in this guide and you are ready to go! 
 
    
 
@@ -36,11 +36,13 @@ The second dataset is the more challenging [CIFAR-10 ](https://www.cs.toronto.ed
 
 ## Benchmarks Neural Network Without Extension
 
-For consistency sake we use the same training and test sets for all the tests. In addition, we visualize the first 10 epochs of all tests in the same manor. You will find for all the successful code sets included a visualization of the loss, the accuracy, and the accuracy against the benchmark. 
+For consistency sake, we use the same training and test sets for all the tests. In addition, we visualize the first 10 epochs of all tests in the same manner. You will find for all the successful code sets included a visualization of the loss, the accuracy, and the accuracy against the benchmark.
 
-Using the interactive graphs in the live Google Colabs notebook you can get all the specific value by hovering your mouse over the point you want to investigate. 
+Using the interactive graphs in the live Google Colabs notebook you can get all the specific value by hovering your mouse over the point you want to investigate.
 
-The Neural Network code provided in class uses the [scikit-learn](https://scikit-learn.org/stable/) and  [NumPy](https://numpy.org/) libraries to learn and predict the hand written digit represented in an 8 by 8 pixel image from the [SciKit Hand Written Digits](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html)  dataset. For completeness we have included the performance here.
+Our naive baseline will be a PyTorch Neural network without extension. The baseline is built using the same architecture as the neural network introduced in Homework 08. The input layer is set by the number of input values for the given dataset. The hidden layer has 30 nodes. The output layer is set by the number of classes to predict, which is 10 for both of our datasets. The non-linear activation for the hidden and output layers is the sigmoid function. 
+
+We have the following baseline performance for our naive neural network on the MNIST dataset.
 
 ![acc](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-01/pytorch/00-mnist-baseline-hw-loss.png) ![acc](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-01/pytorch/00-mnist-baseline-hw-acc.png)
 
@@ -96,16 +98,28 @@ We have the following baseline performance for our naive neural network on the M
 
 ![acc](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-01/pytorch/01-mnist-baseline-acc.png) ![acc](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-01/pytorch/01-mnist-baseline-loss.png)
 
-The set up is very similar for the CIFAR baseline naive neural network. We changed the network architecture to accommodate the larger input image size and additional channels. The CIFAR-10 dataset is much more challenging than the MNIST dataset and we see a decrease in performance to illustrate that difficulty. 
+The CIFAR baseline set up is very similar for the MNIST baseline naive neural network. We changed the network architecture to accommodate the larger input image size and additional channels. 
+
+The CIFAR-10 dataset is much more challenging than the MNIST dataset and we see a decrease in the baseline performance to illustrate that difficulty. The amount of data to parse per example is larger and classes are more difficult to identify given the complexity of the 3-dimensional nature of the class objects in comparison with a handwritten digit. Furthermore, there is a lot of additional noise in the form of surface textures and background information. All of these factors contribute to the additional challenge posed by the CIFAR-10 dataset. 
+
+
 
 ![acc](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-01/pytorch/03-cifar-baseline-loss.png) ![acc](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-01/pytorch/03-cifar-baseline-acc.png)
 
 
 
+### Baseline Synopsis
+
 | Algorithm                  | Training Set Accuracy | Test Set Accuracy |
 | -------------------------- | --------------------- | ----------------- |
 | MNIST Baseline No CNN      | 29.50%                | 24.90%            |
 | CIFAR Baseline No CNN      | 32.67%                | 25.25%            |
+
+
+
+As you will see later in the report the PyTorch extension implementations do better than the NumPy extension implementations. I was concerned that my extension implementations had errors. So I found two implementations by other of the extension in NumPy. Plugging in our datasets the performance on both of the NumPy extensions be others was actually similar or worse than the results achieved. There is no room in this report for comparison due to the two page per extension limit. In addition, the assignment did not require the information. As a result, I did not include the statistics here. However, I would like to note I have verified that the NumPy performance on these extensions is in line with the performance by code published by others. 
+
+For all of the reasons above it is notable that our baseline build in PyTorch has an advantage over our NumPy implementations from the start. In addition, our PyTorch with extension implementations also have an advantage over the NumPy implementations. 
 
 
 
@@ -116,11 +130,11 @@ Convolutional neural networks are often used to evaluate visual imagery. So give
 
 The convolution will need to have a set of kernels, also called filters, that multiplied against the input data on the forward pass to create the output maps. On the backward pass the derivatives multiplied by the input values are used to update each kernel. Ideally, in the end we have a filter that will better help us predict the correct class on the next round. 
 
-### Convolutional Neural Network Implemented in NumPy
+### Extension 01 // Neural Network with Convolution // Using NumPy
 
-<a href="https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-1/extended_implementation_using_numpy.ipynb" style="text-decoration: none;font-family: Roboto, sans-serif;color: white;font-weight: bold;font-size: 16px;padding:8px;margin-top:4px;8px;margin-bottom:4px;background:#00B4FF;">Open in Colab</a>
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-1/extended_implementation_using_numpy.ipynb) 
 
-
+We first develop CNN using NumPy exclusively. For consistency, we start with the same sigmoid activation and after the convolution layer, we use a similar fully connected set of layers to what is in the naive baseline setup. However, we have gone from 64 inputs to the fully connected layer up to 6 * 6 * 64. Although we are using CNN to find new relationships in the data the signal is being lost. Our performance is terrible. We are doing worse than the baseline and worse than just guessing the mode class every time. In addition, our models get worse with training. 
 
 In NumPy we develop a CNN class. The class will carry out initialization, forward propagation, and backwards propagation.
 
@@ -223,7 +237,7 @@ class CNN:
 
 We find that performance is not very good in comparison with our baseline neural network that achieved around 45% testing accuracy. Our performance on the CIFAR-10 dataset is even worse. 
 
-After trying several different methods to improve the performance we hit upon a solution that greatly improved our performance. Replacing the sigmoid activation with Leaky ReLu took our test set over 80%. 
+We experimented with several possible solutions including alternate different hidden node counts, additional hidden layers, different numbers of kernels, and other dead-end ideas. In the end, the most effective solution is to change the activation function. Simply writing an alternative class using leaky ReLu for the activation gives a great performance as you can see below.
 
 Here is the new ReLu class:
 
@@ -309,27 +323,15 @@ The story is different with the CIFAR dataset. Our simplistic CNN is overwhelmed
 
 
 
+### Extension 01 // Neural Network with Convolution // Using PyTorch
 
-| Algorithm                  | Training Set Accuracy | Test Set Accuracy |
-| -------------------------- | --------------------- | ----------------- |
-| MNIST Baseline No CNN      | 29.50%                | 24.90%            |
-| MNIST Sigmoid NumPy CNN    | 20.22%                | 20.58%            |
-| MNIST Leaky ReLu NumPy CNN | 81.17%                | 80.11%            |
-| MNIST PyTorch with CNN     | 96.47%                | 90.54%            |
-| CIFAR Baseline No CNN      | 32.67%                | 25.25%            |
-| CIFAR Sigmoid NumPy CNN    | 9.5%                  | 5.25%             |
-| CIFAR Leaky ReLu NumPy CNN | 18.5%                 | 19.00%            |
-| CIFAR PyTorch CNN          | 96.00%                | 30.50%            |
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-1/scikit_pytorch_implementation.ipynb) 
 
+We will be using the following function to apply convolutions: torch.nn.Conv2d* (in_channels, out_channels, kernel_size, stride, padding). The function applies a 2-D convolution over an input signal composed of several input planes. Using PyTorch to construct our CNN we were able to greatly increase our performance over both the baseline neural network and the NumPy CNN implementation on the MNIST dataset. 
 
+Both the convolution and fully connected layer functions in PyTorch or modified from the naive equations we implement in NumPy. The modification stabilizes the values passing through the network. The inevitable rounding off of large and small values caused us to lose the potential effectiveness of CNN in our NumPy implementation. However, in PyTorch, our test set accuracy moves from the baseline of under 50% up to over 90% on the MNIST dataset. 
 
-### Convolutional Neural Network Implemented in PyTorch
-
-<a href="https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-1/scikit_pytorch_implementation.ipynb" style="text-decoration: none;font-family: Roboto, sans-serif;color: white;font-weight: bold;font-size: 16px;padding:8px;margin-top:4px;8px;margin-bottom:4px;background:#00B4FF;">Open in Colab</a>
-
-
-
-
+You can see the PyTorch functions and their implementation explanations in the PyTorch documentation [here](https://pytorch.org/docs/stable/nn.html#conv2d). 
 
 We first implement a dataset class for use with MNIST.
 
@@ -387,12 +389,6 @@ class MNIST(nn.Module):
 
 
 
-We will be using the following function to apply convolutions: ***torch.nn.Conv2d* (in_channels, out_channels, kernel_size, stride, padding)** 
-
-The function applies a 2-D convolution over an input signal composed of several input planes. 
-
-In the simplest case, the output values of the layer with input size $ (N,C*_{in},H,W) $ and output $(N,C_*{out},H*_{out},W_*{out})$ can be precisely described as: $ out(N*_i,C_*{out_j}=bias(C_{out_j})+\Sigma^{C_{in}-1}*_{k=0} weight(C_*{out_j},k)\star input(N_i,k)$     were $\star$ is the valid 2-D cross-correlation operator, $N$ is the batch size, $C$ denotes a number of channels, $H$ is a height of input planes in pixels, and $W$ is width in pixels. The full documentation is online [here](https://pytorch.org/docs/stable/nn.html#conv2d).
-
 Using PyTorch to construct our CNN we were able to greatly increase our performance over both the baseline neural network and the NumPy CNN implementation on the MNIST dataset. 
 
 
@@ -403,13 +399,29 @@ Using PyTorch to construct our CNN we were able to greatly increase our performa
 
 
 
-We are able to do better than the baseline on the CIFAR-10 dataset. However, you can see we are over-fitting the training set in the extreme. As the input data size grows, the training set remains small, and the classes become more difficult to identify over-training is unfortunately the natural result. 
+We are able to do better than the baseline on the CIFAR-10 dataset. However, you can see we are overfitting the training set in the extreme. As the input data size grows, the training set remains small, and the classes become more difficult to identify over-training is, unfortunately, the natural result. 
 
-A good follow up would be to explore ways of reducing over-fitting. By using an architecture with pooling and skip links we can improve the performance and reduce the over-training. We will explore these two direction in the next two notebooks. In addition, using more training data, more layers, and a variety of kernel sizes would all help as well and would be worth further experimentation. 
+A good follow up would be to explore ways of reducing over-fitting. By using an architecture with pooling and skip links we can improve the performance and reduce the over-training. We will explore these two directions in the next two notebooks. In addition, using more training data, more layers, and a variety of kernel sizes would all help as well and would be worthy of further experimentation. 
 
 
 
 ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-01/pytorch/05-synopsis-mnist.png) ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-01/pytorch/05-synopsis-cifar.png)
+
+
+
+### Extension 01 // Synopsis 
+
+| Algorithm                  | Training Set Accuracy | Test Set Accuracy |
+| -------------------------- | --------------------- | ----------------- |
+| MNIST Baseline No CNN      | 29.50%                | 24.90%            |
+| MNIST Sigmoid NumPy CNN    | 20.22%                | 20.58%            |
+| MNIST Leaky ReLu NumPy CNN | 81.17%                | 80.11%            |
+| MNIST PyTorch with CNN     | 96.47%                | 90.54%            |
+| CIFAR Baseline No CNN      | 32.67%                | 25.25%            |
+| CIFAR Sigmoid NumPy CNN    | 9.5%                  | 5.25%             |
+| CIFAR Leaky ReLu NumPy CNN | 18.5%                 | 19.00%            |
+| CIFAR PyTorch CNN          | 96.00%                | 30.50%            |
+
 
 
 ## Extension 02 // Pooling
@@ -418,9 +430,11 @@ We use our CNN from extension 01 as a starting point. Pooling is traditionally a
 
 
 
-### CNN with Pooling in NumPy
+### Extension 02 // Neural Network with Pooling // Using NumPy
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-2/extended_implemenatation_using_numpy.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-2/extended_implemenatation_using_numpy.ipynb) 
+
+
 
 To implement pooling we must revise our CNN class to include a Pooling CNN. In addition, we also modify our ReLu class to respond the reduced size output of the pooling layer. 
 
@@ -479,11 +493,17 @@ In ResNet they do not use pooling to avoid the loss if signal in the network. In
 
 
 
-### CNN with Pooling in PyTorch
+### Extension 02 // Neural Network with Pooling // Using PyTorch
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-2/scikit_pytorch_implementation.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-2/scikit_pytorch_implementation.ipynb) 
+
+
 
 To implement pooling in PyTorch we use the function $torch.nn.MaxPool2d(kernel\_size, stride, padding)$ Here is our new neural network class using the pooling function on our MNIST class. There is a similar implementation for the CIFAR-10 dataset. 
+
+Again we see the results are quite similar to the PyTorch CNN implementation without pooling. In the CIFAR-10 version, we are seeing a slightly better test set performance. This suggests the pooling may be helping the model to generalize better to the test set. However, the impact in the case is very weak.
+
+Although we have not improved our model over the PyTorch CNN without pooling we are still getting the same performance. So we are doing better than the baseline neural network. 
 
 ```python
 class MNIST(nn.Module):
@@ -513,7 +533,7 @@ class MNIST(nn.Module):
 
 
 
-Again we see the results are quite similar to the PyTorch CNN implementation without pooling. In the CIFAR-10 version we are seeing a slightly better test set performance. This suggests the pooling may be helping the model to generalize better to the test set. However, the impact in the case is very weak.  
+
 
 ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-02/pytorch/01-mnist-pytorch-loss.png) ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-02/pytorch/01-mnist-pytorch-acc.png)
 
@@ -521,12 +541,13 @@ Again we see the results are quite similar to the PyTorch CNN implementation wit
 
 ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-02/pytorch/02-cifar-pytorch-loss.png) ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-02/pytorch/02-cifar-pytorch-acc.png)
 
-### Pooling Synopsis
 
-Although we have not improved our model over the PyTorch CNN without pooling we are still getting the same performance. So we are doing better than the baseline neural network. 
 
 ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-02/pytorch/03-synopsis-mnist-acc.png) ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-02/pytorch/03-synopsis-cifar-acc.png)
 
+
+
+### Extension 02 // Synopsis 
 
 | Algorithm                 | Training Set Accuracy | Test Set Accuracy |
 | ------------------------- | --------------------- | ----------------- |
@@ -543,17 +564,15 @@ Although we have not improved our model over the PyTorch CNN without pooling we 
 
 It has been shown that an effective technique for improving neural networks for some applications is to increase the number of layers as shown in the paper by the creators of ResNet.[[7]](##Bibliography) The group was able to a series of competitions with different applications setting new high-water benchmarks. The intuition says both forward propagation and back propagation signals die off in deep neural networks. However, if we can find a way to allow the signal to persist we can make deep neural networks a powerful learner and predictor. 
 
-Here we implement an identity skip link to pass the pixel value input past the convolution layer. The values are then added together, and activation is applied. This strategy gives our fully connected layers direct access to the pixel inputs and the convolution outputs. 
+Here we implement an identity skip link to pass the pixel value input past the convolution layer. The values are then added together, and activation is applied. This strategy gives our fully connected layers direct access to the pixel inputs and the convolution outputs. In order to implement the skip link, we need update our ReLu class to take the original image and the pooling layer output. Then, those inputs are added together and activated with leaky ReLu. On the back-propagation pass, the incoming gradients are properly distributed. In regards to the MNIST dataset, our performance is similar to the original CNN and pooling implementations. We are still doing just as well, but the new information has not pushed us to the next level. 
+
+### **Extension 03 // Neural Network with Skip Link // Using NumPy**
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-3/extended_implemenation_using_numpy.ipynb) 
 
 
 
-### CNN with Skip Link Extension in NumPy
-
-<a href="https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-3/extended_implementation_using_numpy.ipynb" style="text-decoration: none;font-family: Roboto, sans-serif;color: white;font-weight: bold;font-size: 16px;padding:8px;margin-top:4px;8px;margin-bottom:4px;background:#00B4FF;">Open in Colab</a>
-
-
-
-In order to implement the skip link we need update our ReLu class to take the original image and the pooling layer output. Then, those inputs are added together and activated with leaky ReLu. On the back-propagation pass the incoming gradients are properly distributed. 
+In the next section, we will see that the PyTorch implementation was able to do better. As a result, we can theorize that the less optimized naive NumPy may be responsible for the lack of gains. There are not stability guide rails built into the algorithms so our small gains are being lost. These studies give you a much greater appreciation of frameworks like PyTorch. Our NumPy CNN implementation was already struggling with the overwhelming amount of data in the CIFAR dataset and the more difficult class identification. With the added skip link data we are seeing a slight decrease in performance. It seems the network was already overwhelmed and does not have the capacity to extract a signal and learn from the additional data. 
 
 ```python
     class ReLu:
@@ -616,12 +635,6 @@ In order to implement the skip link we need update our ReLu class to take the or
 
 
 
-In regards to the MNIST dataset our performance is similar to the original CNN and pooling implementations. We are still doing just as well, but the new information has not pushed us to the next level. In the next section we will see that the PyTorch implementation was able to do better. As a result we can theorize that the less optimized naive NumPy may be responsible for the lack of gains. There are not stability guide rails built into the algorithms so our small gains are being lost. These studies give you a much greater appreciation of frameworks like PyTorch. 
-
-Our NumPy CNN implementation was already struggling with the overwhelming amount of data in the CIFAR dataset and the more difficult class identification. With the added skip link data we are seeing a slight decrease in performance. It seems the network was already overwhelmed and does not have the capacity to extract a signal and learn from the additional data. 
-
-
-
 ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-03/numpy/01-mnist-loss.png) ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-03/numpy/01-mnist-acc.png)
 
 
@@ -638,9 +651,9 @@ Our NumPy CNN implementation was already struggling with the overwhelming amount
 
 
 
-### CNN with Skip Link Extension in PyTorch
+### **Extension 03 // Neural Network with Skip Link // Using PyTorch**
 
-<a href="https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-3/scikit_pytorch_implementation.ipynb" style="text-decoration: none;font-family: Roboto, sans-serif;color: white;font-weight: bold;font-size: 16px;padding:8px;margin-top:4px;8px;margin-bottom:4px;background:#00B4FF;">Open in Colab</a>
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-3/scikit_pytorch_implemenation.ipynb) 
 
 
 
@@ -679,9 +692,9 @@ class MNIST(nn.Module):
 
 
 
-We see again how one size does not fit all in machine learning. Our PyTorch skip link model hits a new all time best test set accuracy. The network was able to extract an improved signal and learn better using the extra data passed through the network to the fully connected layer.
+We see again how one size does not fit all in machine learning. Our PyTorch skip link model hits a new all-time best test set accuracy. The network was able to extract an improved signal and learn better using the extra data passed through the network to the fully connected layer.
 
-With the CIFAR-10 we see a similar performance to the CNN with no skip link. It seems that the network is already at its max capacity to learn. To improve the performance on CIFAR-10 we will need to look into how to reduce over-fitting and increase the capacity. In the future, we could start to look into improvement by adding additional CNN layer blocks with skip links. 
+With the CIFAR-10 we see a similar performance to CNN with no skip link. It seems that the network is already at its max capacity to learn. To improve the performance on CIFAR-10 we will need to look into how to reduce over-fitting and increase the capacity. In the future, we could start to look into improvement by adding additional CNN layer blocks with skip links. 
 
 ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-03/pytorch/01-mnist-pytorch-loss.png) ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-03/pytorch/01-mnist-pytorch-acc.png)
 
@@ -692,6 +705,8 @@ With the CIFAR-10 we see a similar performance to the CNN with no skip link. It 
 ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-03/pytorch/03-synopsis-mnist-acc.png) ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-03/pytorch/03-synopsis-cifar-acc.png)
 
 
+
+### Extension 03 Synopsis 
 
 | Algorithm                 | Training Set Accuracy | Test Set Accuracy |
 | ------------------------- | --------------------- | ----------------- |
