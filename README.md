@@ -1,4 +1,4 @@
-# Machine Learning (CS-GY6923) Final Project
+Machine Learning (CS-GY6923) Final Project
 
 This repository and project was developed for the graduate level machine learning class CS-GY-6923 at NYU. The class professor is Linda Sellie. 
 
@@ -99,6 +99,14 @@ We have the following baseline performance for our naive neural network on the M
 The set up is very similar for the CIFAR baseline naive neural network. We changed the network architecture to accommodate the larger input image size and additional channels. The CIFAR-10 dataset is much more challenging than the MNIST dataset and we see a decrease in performance to illustrate that difficulty. 
 
 ![acc](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-01/pytorch/03-cifar-baseline-loss.png) ![acc](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-01/pytorch/03-cifar-baseline-acc.png)
+
+
+
+| Algorithm                  | Training Set Accuracy | Test Set Accuracy |
+| -------------------------- | --------------------- | ----------------- |
+| MNIST Baseline No CNN      | 29.50%                | 24.90%            |
+| CIFAR Baseline No CNN      | 32.67%                | 25.25%            |
+
 
 
 
@@ -302,6 +310,17 @@ The story is different with the CIFAR dataset. Our simplistic CNN is overwhelmed
 
 
 
+| Algorithm                  | Training Set Accuracy | Test Set Accuracy |
+| -------------------------- | --------------------- | ----------------- |
+| MNIST Baseline No CNN      | 29.50%                | 24.90%            |
+| MNIST Sigmoid NumPy CNN    | 20.22%                | 20.58%            |
+| MNIST Leaky ReLu NumPy CNN | 81.17%                | 80.11%            |
+| MNIST PyTorch with CNN     | 96.47%                | 90.54%            |
+| CIFAR Baseline No CNN      | 32.67%                | 25.25%            |
+| CIFAR Sigmoid NumPy CNN    | 9.5%                  | 5.25%             |
+| CIFAR Leaky ReLu NumPy CNN | 18.5%                 | 19.00%            |
+| CIFAR PyTorch CNN          | 96.00%                | 30.50%            |
+
 
 
 ### Convolutional Neural Network Implemented in PyTorch
@@ -393,7 +412,6 @@ A good follow up would be to explore ways of reducing over-fitting. By using an 
 ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-01/pytorch/05-synopsis-mnist.png) ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-01/pytorch/05-synopsis-cifar.png)
 
 
-
 ## Extension 02 // Pooling
 
 We use our CNN from extension 01 as a starting point. Pooling is traditionally applied to the output map a convolution before activation. Pooling can come in many flavors including max pooling, average pooling, and several other less common strategies. Pooling can be applied to reduce the size of an output map, while keeping the number of channels remains the same. Inversely, pooling can keep the output map the same size, but reduce number of channels. 
@@ -402,7 +420,7 @@ We use our CNN from extension 01 as a starting point. Pooling is traditionally a
 
 ### CNN with Pooling in NumPy
 
-<a href="https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-2/extended_implementation_using_numpy.ipynb" style="text-decoration: none;font-family: Roboto, sans-serif;color: white;font-weight: bold;font-size: 16px;padding:8px;margin-top:4px;8px;margin-bottom:4px;background:#00B4FF;">Open in Colab</a>
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-2/extended_implemenatation_using_numpy.ipynb)
 
 To implement pooling we must revise our CNN class to include a Pooling CNN. In addition, we also modify our ReLu class to respond the reduced size output of the pooling layer. 
 
@@ -463,9 +481,7 @@ In ResNet they do not use pooling to avoid the loss if signal in the network. In
 
 ### CNN with Pooling in PyTorch
 
-<a href="https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-2/scikit_pytorch_implementation.ipynb" style="text-decoration: none;font-family: Roboto, sans-serif;color: white;font-weight: bold;font-size: 16px;padding:8px;margin-top:4px;8px;margin-bottom:4px;background:#00B4FF;">Open in Colab</a>
-
-
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aobject/NYU-ML-Project/blob/master/Extension-2/scikit_pytorch_implementation.ipynb)
 
 To implement pooling in PyTorch we use the function $torch.nn.MaxPool2d(kernel\_size, stride, padding)$ Here is our new neural network class using the pooling function on our MNIST class. There is a similar implementation for the CIFAR-10 dataset. 
 
@@ -505,13 +521,21 @@ Again we see the results are quite similar to the PyTorch CNN implementation wit
 
 ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-02/pytorch/02-cifar-pytorch-loss.png) ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-02/pytorch/02-cifar-pytorch-acc.png)
 
-
+### Pooling Synopsis
 
 Although we have not improved our model over the PyTorch CNN without pooling we are still getting the same performance. So we are doing better than the baseline neural network. 
 
-
-
 ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-02/pytorch/03-synopsis-mnist-acc.png) ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-02/pytorch/03-synopsis-cifar-acc.png)
+
+
+| Algorithm                 | Training Set Accuracy | Test Set Accuracy |
+| ------------------------- | --------------------- | ----------------- |
+| MNIST Baseline No Pooling | 29.50%                | 24.90%            |
+| MNIST NumPy Pooling       | 83.95%                | 81.22%            |
+| MNIST PyTorch Pooling     | 97.50%                | 90.82%            |
+| CIFAR Baseline No Pooling | 32.67%                | 25.25%            |
+| CIFAR NumPy Pooling       | 19.17%                | 18.25%            |
+| CIFAR PyTorch Pooling     | 73.83%                | 32.25             |
 
 
 
@@ -666,6 +690,18 @@ With the CIFAR-10 we see a similar performance to the CNN with no skip link. It 
 
 
 ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-03/pytorch/03-synopsis-mnist-acc.png) ![image](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-03/pytorch/03-synopsis-cifar-acc.png)
+
+
+
+| Algorithm                 | Training Set Accuracy | Test Set Accuracy |
+| ------------------------- | --------------------- | ----------------- |
+| MNIST Baseline No Skip Link | 29.50%                | 24.90%            |
+| MNIST NumPy Skip Link     | 86.83%                | 81.08% |
+| MNIST PyTorch Skip Link     | 97.68%                | 92.49%            |
+| CIFAR Baseline No Skip Link | 32.67%                | 25.25%           |
+| CIFAR NumPy Skip Link       | 18.83%                | 15.75%            |
+| CIFAR PyTorch Skip Link     | 63.33%          | 28.00%            |
+
 
 
 
