@@ -100,10 +100,6 @@ We have the following baseline performance for our naive neural network on the M
 
 The CIFAR baseline set up is very similar for the MNIST baseline naive neural network. We changed the network architecture to accommodate the larger input image size and additional channels. 
 
-The CIFAR-10 dataset is much more challenging than the MNIST dataset and we see a decrease in the baseline performance to illustrate that difficulty. The amount of data to parse per example is larger and classes are more difficult to identify given the complexity of the 3-dimensional nature of the class objects in comparison with a handwritten digit. Furthermore, there is a lot of additional noise in the form of surface textures and background information. All of these factors contribute to the additional challenge posed by the CIFAR-10 dataset. 
-
-
-
 ![acc](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-01/pytorch/03-cifar-baseline-loss.png) ![acc](https://raw.githubusercontent.com/aobject/public-nyu-ml/master/ML-Project/results/extension-01/pytorch/03-cifar-baseline-acc.png)
 
 
